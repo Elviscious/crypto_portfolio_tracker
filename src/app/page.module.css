@@ -1,141 +1,97 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
-.main {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
+.page{
+  display:flex;
+ 
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
 }
 
-.intro {
+.header{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+  height: 150px;
+  font-size: 1rem;
+  margin: 30px 30px;
+}
+
+.header span{
+  font-size: .8rem;
+}
+
+.content{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 10px 20px;
+}
+.form{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
+  gap: 15px;
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+  input{
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--foreground);
+    border-radius: 5px;
+    background: var(--background);
+    color: var(--foreground);
+  }
+  button{
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--foreground);
+    color: var(--background);
+    cursor: pointer;
+  }
+  button:hover{
+    opacity: 0.8;
+  }
 }
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
+.tableContainer {
   width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  max-width: 100%;
+  overflow-x: auto;              /* allow horizontal scrolling */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+.table {
+  border-collapse: collapse;
+  width: max-content;            /* use natural table width so it won't shrink */
+  min-width: 320px;             /* allow responsiveness down to 320px */
+  max-width: 100%;
+  white-space: nowrap;          /* keep cells from wrapping and force horizontal scroll */
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.table th, .table td{
+  border-bottom: 1px solid var(--foreground);
+  padding: 8px;
+  text-align: center;
+  white-space: nowrap;          /* ensure content doesn't wrap inside cells */
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+@media screen and (max-width: 768px) {
+  .tableContainer {
+    margin: 0 auto;
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
+@media screen and (max-width: 480px) {
+  .table th, .table td {
+    padding: 6px 4px;
+    font-size: 0.9rem;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+@media screen and (max-width: 320px) {
+  .table th, .table td {
+    padding: 4px 2px;
+    font-size: 0.8rem;
   }
 }
